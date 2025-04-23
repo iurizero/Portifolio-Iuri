@@ -629,56 +629,58 @@ nav ul a:hover::after {
 /*Certifications - Page 2*/
 
 #certifications {
-    width: 100%;
-    height: auto;
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
 }
 
-#certifications a {
-    color: var(--color005);
-    text-decoration: none;
-    transition: all .3s ease-in-out;
-}
-
-#certifications a:hover {
-    color: gray;
+.certifications-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .certification {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background-color: var(--bg-color);
+    background: var(--color002);
     border-radius: 8px;
+    padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+.certification:hover {
+    transform: translateY(-5px);
 }
 
 .certification picture {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 1rem;
+    display: block;
+    margin-bottom: 1rem;
 }
 
 .certification img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 4px;
-    display: block;
-    margin: 0 auto;
+    object-fit: cover;
+}
+
+.certification h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.certification p {
+    color: white;
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+#certifications .title h1,
+#certifications .title p {
+    color: white;
 }
 
 /*Contato*/
@@ -919,7 +921,60 @@ footer a {
         width: 90%;
     }
 
-    .certification img {
-        max-width: 300px;
+    .certifications {
+        padding: 1.5rem;
+    }
+
+    .certifications-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .certification {
+        padding: 1rem;
+    }
+
+    .certification h3 {
+        font-size: 1.1rem;
+    }
+
+    .certification p {
+        font-size: 0.85rem;
+    }
+
+    #certifications .title {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #certifications .title h1 {
+        font-size: 1.5rem;
+    }
+
+    #certifications .title h2 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .certification {
+        padding: 1rem;
+    }
+
+    #certifications {
+        padding: 1rem;
+    }
+
+    .certifications-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .certification h3 {
+        font-size: 1.1rem;
+    }
+
+    .certification p {
+        font-size: 0.85rem;
     }
 }
