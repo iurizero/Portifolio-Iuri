@@ -215,7 +215,7 @@ nav ul a:hover::after {
 .hero-image {
     min-width: 400px;
     min-height: 400px;
-    background: var(--color001) url(../imagens/iuri.png) no-repeat center center;
+    background: var(--color001) url(../imagens/iuri.jpeg) no-repeat center center;
     background-size: 110%;
     border-radius: 50%;
     box-shadow: -2px -2px 0px var(--color004);
