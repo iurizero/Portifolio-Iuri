@@ -1,74 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Iuri - Desenvolvedor Web e Especialista em Cibersegurança">
+    <meta name="keywords" content="desenvolvimento web, cibersegurança, portfolio, frontend, backend">
+    <meta name="author" content="Iuri">
+    <meta name="theme-color" content="#0a0a0a">
+    
     <title>Iuri Costa</title>
+    
+    <!-- Preload de Recursos Críticos -->
+    <link rel="preload" href="estilo/style.css" as="style">
+    <link rel="preload" href="script/script.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+    <link rel="apple-touch-icon" href="imagens/apple-touch-icon.png">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="estilo/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="script/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!--
-    Olá, bem vindo ao meu portifólio.
+    <!-- Skip Link para Acessibilidade -->
+    <a href="#main-content" class="visually-hidden focusable">Pular para o conteúdo principal</a>
     
-    Caso queira ler o código, está disponível em meu GitHub:
-
-    github.com/iurizero
-    -->
-    <header id="mainHeader">
-        <nav id="nav-links">
-            <a href="#" class="logo">Iuri Costa</a>
-            <div class="mobile-menu">
+    <div id="particles-js"></div>
+    
+    <header id="mainHeader" role="banner">
+        <nav id="nav-links" role="navigation" aria-label="Menu principal">
+            <a href="#" class="logo" aria-label="Página inicial">Iuri Costa</a>
+            <div class="mobile-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-list">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-            <ul class="nav-list">
-                <li><a href="#about-me">Sobre mim</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#experience">Experiência</a></li>
-                <li><a href="#contact">Contato</a></li>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#about-me" class="nav-link">Sobre mim</a></li>
+                <li><a href="#projects" class="nav-link">Projetos</a></li>
+                <li><a href="#experience" class="nav-link">Experiência</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
         <section id="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
                     <h2>Olá, eu sou</h2>
                     <h1>Iuri Costa</h1>
-                    <h3>Gestor de redes e desenvolvedor</h3>
+                    <h3>Network Engineer & Ofensive Security</h3>
                     <hr>
-                    <a href="#projects"><input type="button" value="Ver Projetos" class="projects-btn"></a>
-                    <a href="#contact"><input type="button" value="Contato" class="contact-btn"></a>
+                    <a href="#projects" class="btn projects-btn">Ver Projetos</a>
+                    <a href="#contact" class="btn contact-btn">Contato</a>
                 </div>
-                <div class="hero-image">
-            </div>
-
+                <div class="hero-image" aria-hidden="true"></div>
             </div>
         </section>
 
-        <section id="about-me">
+        <section id="about-me" aria-labelledby="about-title">
             <div class="title">
-                <h1>Sobre Mim</h1>
+                <h1 id="about-title">Sobre Mim</h1>
                 <h2>About me</h2>
             </div>
 
             <div class="about-boxs">
                 <div class="about-box">
-                    <img src="imagens/pc.png" alt="Foguete">
+                    <img src="imagens/pc.png" alt="Ícone de computador">
                     <h1>Minha Jornada</h1>
-                    <p>Desde cedo, a tecnologia sempre despertou minha curiosidade, especialmente o fascinante mundo das redes de computadores. Hoje, mergulho de cabeça no universo da programação com o objetivo de me tornar um desenvolvedor full stack e expandir cada vez mais meus horizontes nessa área que tanto me inspira.</p>
+                    <p>Minha trajetória na tecnologia começou com uma paixão por computadores, que me levou à formação técnica em Manutenção e Suporte em Informática pelo IFPE. Foi nesse período que descobri meu interesse por redes, área onde iniciei minha carreira e sigo atuando com dedicação e mérito.</p>
                 </div>
                 <div class="about-box">
-                    <img src="imagens/net.png" alt="Design">
-                    <h1>Redes de computadores</h1>
-                    <p>Escolhi me especializar na área de redes por ser o ponto de encontro entre a tecnologia e o desafio. Gosto de criar soluções para problemas complexos e garantir a segurança e a eficiência das redes de computadores.</p>
+                    <img src="imagens/net.png" alt="Ícone de rede">
+                    <h1>Redes & Cybersecurity</h1>
+                    <p>Atuo com infraestrutura de redes, administrando e dando suporte a ambientes de TI. Atualmente, estou me especializando em segurança ofensiva, com foco em análise de vulnerabilidades. Busco aplicar minha experiência prática em redes para desenvolver soluções mais seguras e eficientes.</p>
                 </div>
                 <div class="about-box">
-                    <img src="imagens/xadrez.png" alt="Prancha de Surf">
+                    <img src="imagens/xadrez.png" alt="Ícone de xadrez">
                     <h1>Fora do Computador</h1>
-                    <p>Quando não estou desenvolvendo ou construindo redes, você me encontra nos tabuleiros de xadrez ou lendo um livro sobre tecnologia ou ficção científica</p>
+                    <p>Quando não estou mergulhado em códigos ou configurando redes, gosto de exercitar a mente nos tabuleiros de xadrez ou me aventurar por livros de tecnologia e ficção científica. Acredito que o equilíbrio entre raciocínio estratégico e criatividade é essencial tanto na vida quanto na área da tecnologia.</p>
                 </div>
             </div>
             
@@ -85,12 +102,15 @@
                 <img alt="Java" title="Java" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-plain.svg" />
                 <img alt="Go" title="Go" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-plain.svg" />
                 <img alt="GitHub" title="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
+                <img alt="Linux" title="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" />
+                <img alt="Docker" title="Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+                <img alt="Kali Linux" title="Kali Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kalilinux/kalilinux-original.svg" />
             </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" aria-labelledby="projects-title">
             <div class="title">
-                <h1>Projetos</h1>
+                <h1 id="projects-title">Projetos</h1>
                 <h2>Projects</h2>
             </div>
 
@@ -98,21 +118,21 @@
                 <div class="projects-box">
                     <div class="project-content">
                         <h1>PingMonitor - App de monitoramento de ping</h1>
-                        <a href="https://github.com/iurizero/PingMonitor" target="_blank">Repositório</a>
+                        <a href="https://github.com/iurizero/PingMonitor" target="_blank" rel="noopener noreferrer">Repositório</a>
                         <p>Este projeto é um aplicativo em python que monitora o ping de um ou mais hosts ou servidores e envia alertas no telegram caso o ping seja seja perdido ou exceda um valor pré-definido.</p>
                         <div class="project-icons">
-                            <img alt="HTML5" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" />
+                            <img alt="Python" title="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" />
                         </div>
                     </div>
-                    <a href="https://github.com/iurizero/PingMonitor" target="_blank">
-                        <div class="project-image" id="image001"></div>
+                    <a href="https://github.com/iurizero/PingMonitor" target="_blank" rel="noopener noreferrer">
+                        <div class="project-image" id="image001" aria-hidden="true"></div>
                     </a>
                 </div>
 
                 <div class="projects-box">
                     <div class="project-content">
                         <h1>Donna Luiza - Landing Page</h1>
-                        <a href="https://github.com/iurizero/DonnaLuizaWeb" target="_blank">Repositório</a>
+                        <a href="https://github.com/iurizero/DonnaLuizaWeb" target="_blank" rel="noopener noreferrer">Repositório</a>
                         <p>Este projeto é uma Landing Page interativa desenvolvida para apresentar a confeitaria Donna Luiza. A página inclui um menu de navegação, informações sobre a confeitaria, produtos e um formulário de contato focado em redirecionar o usuário para o Whatsapp da confeitaria com um pedido pré-definido.</p>
                         <div class="project-icons">
                             <img alt="HTML5" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" />
@@ -120,38 +140,49 @@
                             <img alt="JavaScript" title="JavaScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
                         </div>
                     </div>
-                    <a href="https://github.com/iurizero/DonnaLuizaWeb" target="_blank">
-                        <div class="project-image" id="image002"></div>
+                    <a href="https://github.com/iurizero/DonnaLuiza" target="_blank" rel="noopener noreferrer">
+                        <div class="project-image" id="image002" aria-hidden="true"></div>
                     </a>
                 </div>
 
                 <div class="projects-box">
                     <div class="project-content">
                         <h1>ShadowKey</h1>
-                        <a href="https://github.com/iurizero/Keylogger-estudo" target="_blank">Repositório</a>
+                        <a href="https://github.com/iurizero/Keylogger-estudo" target="_blank" rel="noopener noreferrer">Repositório</a>
                         <p>Este projeto foi desenvolvido com fins de <strong style="color: var(--color004); font-weight: 700; font-size: 1.1em;">ESTUDO</strong>. É um keylogger focado na captura de dados sensíveis do usuário, voltado para o estudo de segurança da informação na área de phishing. Ele captura dados como o login e senha do usuário e os salva numa lista de dados.</p>
                         <div class="project-icons">
-                            <img alt="HTML5" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" />
+                            <img alt="Python" title="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" />
                             <img alt="HTML5" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" />
                             <img alt="CSS3" title="CSS3" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg" />
                             <img alt="JavaScript" title="JavaScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
                         </div>
                     </div>
-                    <a href="https://github.com/iurizero/Keylogger-estudo" target="_blank">
-                        <div class="project-image" id="image003"></div>
+                    <a href="https://github.com/iurizero/Keylogger-estudo" target="_blank" rel="noopener noreferrer">
+                        <div class="project-image" id="image003" aria-hidden="true"></div>
+                    </a>
+                </div>
+
+                <div class="projects-box">
+                    <div class="project-content">
+                        <h1>IntruSentry - Sistema de Detecção de Intrusão</h1>
+                        <a href="https://github.com/iurizero/IntruSentry" target="_blank" rel="noopener noreferrer">Repositório</a>
+                        <p>Um sistema de detecção de intrusão (IDS) desenvolvido em Python que monitora o tráfego de rede em tempo real, detectando atividades suspeitas e potenciais ameaças. O sistema utiliza análise de pacotes, detecção de anomalias e integração com logs para fornecer alertas em tempo real sobre possíveis ataques ou violações de segurança.<br>(AINDA EM DESENVOLVIMENTO)</p>
+                        <div class="project-icons">
+                            <img alt="Python" title="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" />
+                            <img alt="Linux" title="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" />
+                            <img alt="Docker" title="Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
+                        </div>
+                    </div>
+                    <a href="https://github.com/iurizero/IntruSentry" target="_blank" rel="noopener noreferrer">
+                        <div class="project-image" id="image004" aria-hidden="true"></div>
                     </a>
                 </div>
             </div>
         </section>
 
         <section id="experience">
-            <div class="title">
-                <h1>Experiência</h1>
-                <h2>Experience</h2>
-            </div>
-
+            <h2>Experiência</h2>
             <div class="experience-blocks">
-
                 <div class="education-block">
                     <h3>Formação</h3>
                     <div class="education-item">
@@ -159,7 +190,6 @@
                         <h5>Instituto Federal de Pernambuco</h5>
                         <h6>2020 - 2022</h6>
                     </div>
-                    <hr>
                     <div class="education-item">
                         <h4>Extensão em programação Python</h4>
                         <h5>Instituto Federal de Pernambuco</h5>
@@ -173,58 +203,48 @@
                         <ul>
                             <li>
                                 <a href="certifications.html">
-                                    <div class="certification-image" id="certification001">
+                                    <div id="certification001" class="certification-image"></div>
+                                    <div class="certification-text">
+                                        <h4>Python</h4>
+                                        <h5>Bradesco</h5>
                                     </div>
                                 </a>
-
-                                <div class="certification-text">
-                                    <h4>Python</h4>
-                                    <h5>Bradesco</h5>
-                                </div>
                             </li>
                             <li>
                                 <a href="certifications.html">
-                                    <div class="certification-image" id="certification002">
+                                    <div id="certification002" class="certification-image"></div>
+                                    <div class="certification-text">
+                                        <h4>Fundamentos em Python 2</h4>
+                                        <h5>Cisco NetAcad</h5>
                                     </div>
                                 </a>
-
-                                <div class="certification-text">
-                                    <h4>Fundamentos em Python 2</h4>
-                                    <h5>Cisco NetAcad</h5>
-                                </div>
                             </li>
                             <li>
                                 <a href="certifications.html">
-                                    <div class="certification-image" id="certification003">
+                                    <div id="certification003" class="certification-image"></div>
+                                    <div class="certification-text">
+                                        <h4>Linux Unhatched</h4>
+                                        <h5>Cisco NetAcad</h5>
                                     </div>
                                 </a>
-
-                                <div class="certification-text">
-                                    <h4>Linux Unhatched</h4>
-                                    <h5>Cisco NetAcad</h5>
-                                </div>
                             </li>
                             <li>
                                 <a href="certifications.html">
-                                    <div class="certification-image" id="certification004">
+                                    <div id="certification004" class="certification-image"></div>
+                                    <div class="certification-text">
+                                        <h4>Cybersecurity</h4>
+                                        <h5>FIAP</h5>
                                     </div>
                                 </a>
-
-                                <div class="certification-text">
-                                    <h4>Cybersecurity</h4>
-                                    <h5>FIAP</h5>
-                                </div>
                             </li>
                             <li>
                                 <a href="certifications.html">
-                                    <div class="certification-image" id="certification005">
+                                    <div id="certification005" class="certification-image"></div>
+                                    <div class="certification-text">
+                                        <h4>Google Cybersecurity</h4>
+                                        <h5>Google and Coursera</h5>
                                     </div>
                                 </a>
-
-                                <div class="certification-text">
-                                    <h4>Google Cybersecurity</h4>
-                                    <h5>Google and Coursera</h5>
-                                </div>
                             </li>
                         </ul>
                     </div>
@@ -238,7 +258,6 @@
                             <h5>Albuquerque Telecomunicações</h5>
                             <h6>06/2019 - Atualmente</h6>
                         </div>
-
                         <div class="freelance-tags">
                             <ul>
                                 <li>
@@ -257,32 +276,32 @@
             </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" aria-labelledby="contact-title">
             <div class="title">
-                <h1>Contato</h1>
+                <h1 id="contact-title">Contato</h1>
                 <h2>Contact</h2>
             </div>
 
             <div class="contact">
                 <h3>Minhas Redes Sociais</h3>
                 <ul class="social-icons">
-                    <li><a href="https://wa.me/5581997922470" target="_blank"><img src="imagens/whats.png"/></a></li>
-                    <li><a href="https://www.instagram.com/tavares.c_/" target="_blank"><img src="imagens/insta.png"/></a></li>
-                    <li><a href="https://www.linkedin.com/in/iuri-costa-ba6365230/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"/></a></li>
-                    <li><a href="https://github.com/iurizero" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"/></a></li>
-                    <li><a href="mailto:iuri.j.t@outlook.com"><img src="imagens/mail.png"/></a></li>
+                    <li><a href="https://wa.me/5581997922470" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="imagens/whats.png" alt="WhatsApp"/></a></li>
+                    <li><a href="https://www.instagram.com/tavares.c_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="imagens/insta.png" alt="Instagram"/></a></li>
+                    <li><a href="https://www.linkedin.com/in/iuri-costa-ba6365230/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg" alt="LinkedIn"/></a></li>
+                    <li><a href="https://github.com/iurizero" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub"/></a></li>
+                    <li><a href="mailto:iuri.j.t@outlook.com" aria-label="Email"><img src="imagens/mail.png" alt="Email"/></a></li>
                 </ul>
             </div>
         </section>
-
-        <footer>
-            <h2>Desenvolvido por Iuri Costa</h2>
-            <ul>
-                <li><a href="https://www.linkedin.com/in/iuri-costa-ba6365230/" target="_blank">Linkedin</a></li>
-                <li><a href="https://github.com/iurizero" target="_blank">GitHub</a></li>
-            </ul>
-        </footer>
     </main>
+
+    <footer role="contentinfo">
+        <h2>Desenvolvido por Iuri Costa</h2>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/iuri-costa-ba6365230/" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+            <li><a href="https://github.com/iurizero" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+    </footer>
 
     <script src="script/script.js"></script>
 </body>

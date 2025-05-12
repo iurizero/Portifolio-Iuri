@@ -1,61 +1,319 @@
-const header = document.getElementById("mainHeader");
+// Configurações
+const CONFIG = {
+    scrollThreshold: 50,
+    animationSpeed: {
+        fast: 150,
+        medium: 300,
+        slow: 500
+    }
+};
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
+// Gerenciador de Navegação
+class NavigationManager {
+    constructor() {
+        this.header = document.getElementById("mainHeader");
+        this.mobileMenu = document.querySelector('.mobile-menu');
+        this.navList = document.querySelector('.nav-list');
+        this.navLinks = document.querySelectorAll('.nav-list li');
+        this.lastScroll = 0;
+        
+        this.init();
     }
-});
 
-class MobileNavbar {
-    constructor(mobileMenu, navList, navLinks) {
-      this.mobileMenu = document.querySelector(mobileMenu);
-      this.navList = document.querySelector(navList);
-      this.navLinks = document.querySelectorAll(navLinks);
-      this.activeClass = "active";
-  
-      this.handleClick = this.handleClick.bind(this);
-    }
-  
-    animateLinks() {
-      this.navLinks.forEach((link, index) => {
-        link.style.animation
-          ? (link.style.animation = "")
-          : (link.style.animation = `navLinkFade 0.5s ease forwards ${
-              index / 7 + 0.3
-            }s`);
-      });
-    }
-  
-    handleClick() {
-      this.navList.classList.toggle(this.activeClass);
-      this.mobileMenu.classList.toggle(this.activeClass);
-      this.animateLinks();
-    }
-  
-    addClickEvent() {
-      this.mobileMenu.addEventListener("click", this.handleClick);
-    }
-  
     init() {
-      if (this.mobileMenu) {
-        this.addClickEvent();
-      }
-      return this;
+        this.setupScrollListener();
+        this.setupMobileMenu();
+        this.setupSmoothScroll();
     }
-  }
-  
-  const mobileNavbar = new MobileNavbar(
-    ".mobile-menu",
-    ".nav-list",
-    ".nav-list li",
-  );
-  mobileNavbar.init();
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const heroContent = document.querySelector('.hero-content');
-    setTimeout(() => {
-        heroContent.classList.add('visible');
-    }, 100);
-  })
+    setupScrollListener() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    handleScroll() {
+        const currentScroll = window.pageYOffset;
+        
+        // Header scroll effect
+        if (currentScroll > CONFIG.scrollThreshold) {
+            this.header.classList.add("scrolled");
+        } else {
+            this.header.classList.remove("scrolled");
+        }
+        
+        // Hide/show header on scroll
+        if (currentScroll <= 0) {
+            this.header.classList.remove('scroll-up');
+            return;
+        }
+        
+        if (currentScroll > this.lastScroll && !this.header.classList.contains('scroll-down')) {
+            this.header.classList.remove('scroll-up');
+            this.header.classList.add('scroll-down');
+        } else if (currentScroll < this.lastScroll && this.header.classList.contains('scroll-down')) {
+            this.header.classList.remove('scroll-down');
+            this.header.classList.add('scroll-up');
+        }
+        
+        this.lastScroll = currentScroll;
+    }
+
+    setupMobileMenu() {
+        this.mobileMenu.addEventListener('click', () => {
+            this.navList.classList.toggle('active');
+            this.mobileMenu.classList.toggle('active');
+            this.animateLinks();
+        });
+    }
+
+    animateLinks() {
+        this.navLinks.forEach((link, index) => {
+            link.style.animation = link.style.animation 
+                ? '' 
+                : `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+        });
+    }
+
+    setupSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    if (this.navList.classList.contains('active')) {
+                        this.navList.classList.remove('active');
+                        this.mobileMenu.classList.remove('active');
+                        this.animateLinks();
+                    }
+                }
+            });
+        });
+    }
+}
+
+// Gerenciador de Animações
+class AnimationManager {
+    constructor() {
+        this.observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        this.init();
+    }
+
+    init() {
+        this.setupScrollAnimations();
+        this.setupHeroAnimations();
+        this.setupHoverEffects();
+    }
+
+    setupScrollAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, this.observerOptions);
+
+        document.querySelectorAll('.about-box, .projects-box, .education-item, .certifications-item, .freelance-item')
+            .forEach(el => observer.observe(el));
+    }
+
+    setupHeroAnimations() {
+        const heroContent = document.querySelector('.hero-content');
+        const heroTitle = document.querySelector('.hero-content h1');
+        const heroSubtitle = document.querySelector('.hero-content h3');
+        const heroImage = document.querySelector('.hero-image');
+
+        // Fade in hero content
+        setTimeout(() => heroContent.classList.add('visible'), 100);
+
+        // Typing effect - Aumentando a velocidade da animação
+        this.typeWriter(heroTitle, heroTitle.textContent, 120); // Reduzindo de 100 para 50
+        setTimeout(() => {
+            this.typeWriter(heroSubtitle, heroSubtitle.textContent, 75); // Reduzindo de medium para 30
+        }, heroTitle.textContent.length * 50); // Ajustando o delay baseado na nova velocidade
+
+        // Parallax effect
+        window.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const xPos = (clientX / window.innerWidth - 0.5) * 20;
+            const yPos = (clientY / window.innerHeight - 0.5) * 20;
+            
+            heroImage.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        });
+    }
+
+    typeWriter(element, text, speed = 100) {
+        let i = 0;
+        element.innerHTML = '';
+        
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        
+        type();
+    }
+
+    setupHoverEffects() {
+        // Project images hover effect
+        document.querySelectorAll('.project-image').forEach(image => {
+            image.addEventListener('mouseenter', () => {
+                image.style.transform = 'scale(1.05)';
+                image.style.transition = 'transform 0.3s ease';
+            });
+            
+            image.addEventListener('mouseleave', () => {
+                image.style.transform = 'scale(1)';
+            });
+        });
+
+        // Skills icons hover effect
+        document.querySelectorAll('.skills-icons img').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.filter = 'brightness(0) invert(1) drop-shadow(0 0 10px var(--color004))';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.filter = 'brightness(0) invert(1)';
+            });
+        });
+    }
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar gerenciadores
+    const navigation = new NavigationManager();
+    const animations = new AnimationManager();
+
+    // Configurar partículas
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: ['#ff3333', '#00ff88', '#0066ff']
+            },
+            shape: {
+                type: ['circle', 'triangle', 'edge'],
+                stroke: {
+                    width: 0,
+                    color: '#000000'
+                },
+                polygon: {
+                    nb_sides: 5
+                }
+            },
+            opacity: {
+                value: 0.5,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 2,
+                    size_min: 0.1,
+                    sync: false
+                }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ff3333',
+                opacity: 0.2,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: false,
+                attract: {
+                    enable: true,
+                    rotateX: 600,
+                    rotateY: 1200
+                }
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 0.5
+                    }
+                },
+                bubble: {
+                    distance: 400,
+                    size: 40,
+                    duration: 2,
+                    opacity: 8,
+                    speed: 3
+                },
+                repulse: {
+                    distance: 200,
+                    duration: 0.4
+                },
+                push: {
+                    particles_nb: 4
+                },
+                remove: {
+                    particles_nb: 2
+                }
+            }
+        },
+        retina_detect: true
+    });
+});
