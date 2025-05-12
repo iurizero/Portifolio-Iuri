@@ -13,8 +13,8 @@ class NavigationManager {
     constructor() {
         this.header = document.getElementById("mainHeader");
         this.mobileMenu = document.querySelector('.mobile-menu');
-        this.navList = document.querySelector('.nav-list');
-        this.navLinks = document.querySelectorAll('.nav-list li');
+        this.navList = document.querySelector('nav ul');
+        this.navLinks = document.querySelectorAll('nav ul li');
         this.lastScroll = 0;
         
         this.init();
@@ -27,30 +27,18 @@ class NavigationManager {
     }
 
     setupScrollListener() {
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
+        window.addEventListener('scroll', () => this.handleScroll());
     }
 
     handleScroll() {
         const currentScroll = window.pageYOffset;
         
-        // Header scroll effect
         if (currentScroll > CONFIG.scrollThreshold) {
             this.header.classList.add("scrolled");
         } else {
             this.header.classList.remove("scrolled");
         }
         
-        // Hide/show header on scroll
         if (currentScroll <= 0) {
             this.header.classList.remove('scroll-up');
             return;
@@ -68,18 +56,30 @@ class NavigationManager {
     }
 
     setupMobileMenu() {
-        this.mobileMenu.addEventListener('click', () => {
-            this.navList.classList.toggle('active');
-            this.mobileMenu.classList.toggle('active');
-            this.animateLinks();
-        });
-    }
+        if (!this.mobileMenu) return;
 
-    animateLinks() {
-        this.navLinks.forEach((link, index) => {
-            link.style.animation = link.style.animation 
-                ? '' 
-                : `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+        this.mobileMenu.addEventListener('click', () => {
+            this.mobileMenu.classList.toggle('active');
+            this.navList.classList.toggle('active');
+            document.body.style.overflow = this.navList.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Fechar menu ao clicar em um link
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.mobileMenu.classList.remove('active');
+                this.navList.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Fechar menu ao redimensionar a janela
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 800) {
+                this.mobileMenu.classList.remove('active');
+                this.navList.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 
@@ -94,12 +94,6 @@ class NavigationManager {
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    
-                    if (this.navList.classList.contains('active')) {
-                        this.navList.classList.remove('active');
-                        this.mobileMenu.classList.remove('active');
-                        this.animateLinks();
-                    }
                 }
             });
         });
