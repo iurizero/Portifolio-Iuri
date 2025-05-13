@@ -986,14 +986,37 @@ nav ul a {
 .skills-icons img {
     width: 55px;
     height: 55px;
-    filter: brightness(0) invert(15%) sepia(100%) saturate(6932%) hue-rotate(357deg) brightness(87%) contrast(115%);
     transition: all .3s ease-in-out;
     object-fit: contain;
+    opacity: 0.9;
 }
 
+/* Efeito hover para todos os ícones */
 .skills-icons img:hover {
     transform: scale(1.2);
-    filter: brightness(0) invert(15%) sepia(100%) saturate(6932%) hue-rotate(357deg) brightness(87%) contrast(115%) drop-shadow(0 0 8px var(--color004));
+    opacity: 1;
+}
+
+@media (max-width: 800px) {
+    .skills-icons {
+        gap: 2.5rem;
+    }
+
+    .skills-icons img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-icons {
+        gap: 2rem;
+    }
+
+    .skills-icons img {
+        width: 35px;
+        height: 35px;
+    }
 }
 
 /*Projetos*/
@@ -2316,17 +2339,6 @@ footer a:hover::after {
         padding: 2rem 0;
     }
 
-    .nav-list li {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-    }
-
-    .nav-list.active li {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
     .mobile-menu {
         display: block;
     }
@@ -2389,5 +2401,163 @@ footer a:hover::after {
     .social-icons img {
         width: 20px;
         height: 20px;
+    }
+}
+
+/* Ajustes específicos para Opera GX */
+@supports (-webkit-overflow-scrolling: touch) {
+    /* Ajustes para o menu mobile */
+    @media (max-width: 800px) {
+        nav ul {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .hero-container {
+            width: 95%;
+            padding: 0 1rem;
+        }
+
+        .about-boxs {
+            width: 95%;
+            padding: 0 1rem;
+        }
+
+        .projects-box {
+            width: 95%;
+            padding: 0 1rem;
+        }
+
+        .experience-blocks {
+            width: 95%;
+            padding: 0 1rem;
+        }
+    }
+
+    /* Ajustes para telas menores */
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 1.8rem;
+            line-height: 1.3;
+        }
+
+        .hero-content h2 {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .hero-content h3 {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .hero-image {
+            min-width: 220px;
+            min-height: 220px;
+            margin: 1rem auto;
+        }
+
+        .about-box {
+            padding: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .project-content {
+            padding: 1.2rem;
+        }
+
+        .project-image {
+            height: 180px;
+        }
+
+        .contact {
+            width: 95%;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+    }
+}
+
+/* Ajustes gerais de responsividade */
+@media (max-width: 800px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .hero-content hr {
+        width: 100%;
+        margin: 1.5rem auto;
+    }
+
+    .about-boxs {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .about-box {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .projects-box {
+        flex-direction: column;
+    }
+
+    .project-image {
+        width: 100%;
+        height: 250px;
+        margin: 0;
+    }
+
+    .experience-blocks {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 0 1rem;
+    }
+
+    .hero-content {
+        padding: 0;
+    }
+
+    .hero-content input {
+        width: 100%;
+        max-width: 200px;
+        margin: 0.5rem auto;
+    }
+
+    .about-boxs {
+        padding: 0 1rem;
+    }
+
+    .projects-box {
+        margin: 0 auto;
+    }
+
+    .project-content {
+        width: 100%;
+    }
+
+    .experience-blocks {
+        padding: 0 1rem;
+    }
+
+    .contact {
+        margin: 0 auto;
     }
 }

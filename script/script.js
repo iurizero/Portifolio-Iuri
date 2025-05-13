@@ -185,16 +185,16 @@ class AnimationManager {
             });
         });
 
-        // Skills icons hover effect
-        document.querySelectorAll('.skills-icons img').forEach(icon => {
-            icon.addEventListener('mouseenter', () => {
-                icon.style.filter = 'brightness(0) invert(1) drop-shadow(0 0 10px var(--color004))';
-            });
+        // Removendo o efeito hover dos ícones de skills
+        // document.querySelectorAll('.skills-icons img').forEach(icon => {
+        //     icon.addEventListener('mouseenter', () => {
+        //         icon.style.filter = 'brightness(0) invert(1) drop-shadow(0 0 10px var(--color004))';
+        //     });
             
-            icon.addEventListener('mouseleave', () => {
-                icon.style.filter = 'brightness(0) invert(1)';
-            });
-        });
+        //     icon.addEventListener('mouseleave', () => {
+        //         icon.style.filter = 'brightness(0) invert(1)';
+        //     });
+        // });
     }
 }
 
