@@ -14,7 +14,7 @@ class NavigationManager {
         this.header = document.getElementById("mainHeader");
         this.mobileMenu = document.querySelector('.mobile-menu');
         this.navList = document.querySelector('nav ul');
-        this.navLinks = document.querySelectorAll('nav ul li');
+        this.navLinks = document.querySelectorAll('nav ul a');
         this.lastScroll = 0;
         
         this.init();
@@ -61,6 +61,8 @@ class NavigationManager {
         this.mobileMenu.addEventListener('click', () => {
             this.mobileMenu.classList.toggle('active');
             this.navList.classList.toggle('active');
+            const expanded = this.navList.classList.contains('active') ? 'true' : 'false';
+            this.mobileMenu.setAttribute('aria-expanded', expanded);
             document.body.style.overflow = this.navList.classList.contains('active') ? 'hidden' : '';
         });
 
@@ -69,6 +71,7 @@ class NavigationManager {
             link.addEventListener('click', () => {
                 this.mobileMenu.classList.remove('active');
                 this.navList.classList.remove('active');
+                this.mobileMenu.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             });
         });
@@ -78,6 +81,7 @@ class NavigationManager {
             if (window.innerWidth > 800) {
                 this.mobileMenu.classList.remove('active');
                 this.navList.classList.remove('active');
+                this.mobileMenu.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             }
         });

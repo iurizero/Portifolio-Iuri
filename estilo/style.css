@@ -114,6 +114,11 @@ body {
     }
 }
 
+/* Utilitário aplicado via JS para animações de entrada */
+.animate-fade-in {
+    animation: fadeIn var(--transition-medium) forwards;
+}
+
 @keyframes slideIn {
     from { 
         transform: translateX(-100%); 
@@ -557,9 +562,12 @@ nav ul a {
     display: none;
     cursor: pointer;
     z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
-.mobile-menu div {
+.mobile-menu div, .mobile-menu span {
     width: 25px;
     height: 2px;
     background: var(--color005);

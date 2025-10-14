@@ -13,7 +13,6 @@
     <!-- Preload de Recursos Críticos -->
     <link rel="preload" href="estilo/style.css" as="style">
     <link rel="preload" href="script/script.js" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="imagens/favicon.png">
@@ -21,11 +20,14 @@
     
     <!-- Estilos -->
     <link rel="stylesheet" href="estilo/style.css">
+    <!-- Otimização de fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
     <script src="script/script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
     <!-- Skip Link para Acessibilidade -->
@@ -33,14 +35,14 @@
     
     <div id="particles-js"></div>
     
-    <header id="mainHeader" role="banner">
-        <nav id="nav-links" role="navigation" aria-label="Menu principal">
-            <a href="#" class="logo" aria-label="Página inicial">Iuri Costa</a>
-            <div class="mobile-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-list">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
+    <header id="mainHeader" role="banner" class="header">
+        <nav id="nav-links" role="navigation" aria-label="Menu principal" class="nav">
+            <a href="#" class="nav-logo" aria-label="Página inicial">Iuri Costa</a>
+            <button class="mobile-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-list">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </button>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#about-me" class="nav-link">Sobre mim</a></li>
                 <li><a href="#projects" class="nav-link">Projetos</a></li>
@@ -51,12 +53,12 @@
     </header>
 
     <main id="main-content" role="main">
-        <section id="hero-section">
+        <section id="hero-section" class="hero">
             <div class="hero-container">
                 <div class="hero-content">
                     <h2>Olá, eu sou</h2>
-                    <h1>Iuri Costa</h1>
-                    <h3>Network Engineer & Ofensive Security</h3>
+                    <h1 class="hero-title">Iuri Costa</h1>
+                    <h3 class="hero-subtitle">Network Engineer & Offensive Security</h3>
                     <hr>
                     <a href="#projects" class="btn projects-btn">Ver Projetos</a>
                     <a href="#contact" class="btn contact-btn">Contato</a>
@@ -73,17 +75,17 @@
 
             <div class="about-boxs">
                 <div class="about-box">
-                    <img src="imagens/pc.png" alt="Ícone de computador">
+                    <img src="imagens/pc.png" alt="Ícone de computador" loading="lazy" decoding="async">
                     <h1>Minha Jornada</h1>
                     <p>Minha trajetória na tecnologia começou com uma paixão por computadores, que me levou à formação técnica em Manutenção e Suporte em Informática pelo IFPE. Foi nesse período que descobri meu interesse por redes, área onde iniciei minha carreira e sigo atuando com dedicação e mérito.</p>
                 </div>
                 <div class="about-box">
-                    <img src="imagens/net.png" alt="Ícone de rede">
-                    <h1>Redes & Cybersecurity</h1>
-                    <p>Atuo com infraestrutura de redes, administrando e dando suporte a ambientes de TI. Atualmente, estou me especializando em segurança ofensiva, com foco em análise de vulnerabilidades. Busco aplicar minha experiência prática em redes para desenvolver soluções mais seguras e eficientes.</p>
+                    <img src="imagens/net.png" alt="Ícone de rede" loading="lazy" decoding="async">
+                    <h1>Redes & Análise de Sistemas</h1>
+                    <p>Atuo com infraestrutura de redes, administrando e dando suporte a ambientes de TI. Atualmente, estou me especializando em análise e desenvolvimento de sistemas no IFPE. Busco aplicar minha experiência prática em redes para desenvolver soluções mais seguras e eficientes.</p>
                 </div>
                 <div class="about-box">
-                    <img src="imagens/xadrez.png" alt="Ícone de xadrez">
+                    <img src="imagens/xadrez.png" alt="Ícone de xadrez" loading="lazy" decoding="async">
                     <h1>Fora do Computador</h1>
                     <p>Quando não estou mergulhado em códigos ou configurando redes, gosto de exercitar a mente nos tabuleiros de xadrez ou me aventurar por livros de tecnologia e ficção científica. Acredito que o equilíbrio entre raciocínio estratégico e criatividade é essencial tanto na vida quanto na área da tecnologia.</p>
                 </div>
@@ -95,16 +97,16 @@
             </div>
 
             <div class="skills-icons">
-                <img alt="HTML5" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" />
-                <img alt="CSS3" title="CSS3" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg" />
-                <img alt="JavaScript" title="JavaScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
-                <img alt="Python" title="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" />
-                <img alt="Java" title="Java" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-plain.svg" />
-                <img alt="Go" title="Go" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" />
-                <img alt="GitHub" title="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
-                <img alt="RedHat" title="RedHat" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redhat/redhat-original.svg" />
-                <img alt="Linux" title="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" />
-                <img alt="Powershell" title="Powershell" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg" />
+                <img alt="HTML5" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" loading="lazy" decoding="async" />
+                <img alt="CSS3" title="CSS3" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg" loading="lazy" decoding="async" />
+                <img alt="JavaScript" title="JavaScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" loading="lazy" decoding="async" />
+                <img alt="Python" title="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" loading="lazy" decoding="async" />
+                <img alt="Java" title="Java" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-plain.svg" loading="lazy" decoding="async" />
+                <img alt="Go" title="Go" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" loading="lazy" decoding="async" />
+                <img alt="GitHub" title="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" loading="lazy" decoding="async" />
+                <img alt="RedHat" title="RedHat" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redhat/redhat-original.svg" loading="lazy" decoding="async" />
+                <img alt="Linux" title="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" loading="lazy" decoding="async" />
+                <img alt="Powershell" title="Powershell" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg" loading="lazy" decoding="async" />
             </div>
         </section>
 
@@ -191,9 +193,9 @@
                         <h6>2020 - 2022</h6>
                     </div>
                     <div class="education-item">
-                        <h4>Extensão em programação Python</h4>
+                        <h4>Análise e desenvolvimento de sistemas</h4>
                         <h5>Instituto Federal de Pernambuco</h5>
-                        <h6>2021 - 2022</h6>
+                        <h6>2025 - 2028</h6>
                     </div>
                 </div>
 
@@ -264,10 +266,10 @@
                                     <p>Faço gestão, instalação e manutenção de redes de internet, com foco em roteamento, configuração de redes Wi-Fi e cabeamento estruturado.</p>
                                 </li>
                                 <li>
-                                    <p>Adiquiri experiência com redes complexas, montagem e configuração de servidores e roteamento usando o software Cisco Packet Tracer e MikroTik.</p>
+                                    <p>Adquiri experiência com redes complexas, montagem e configuração de servidores e roteamento usando o software Cisco Packet Tracer e MikroTik.</p>
                                 </li>
                                 <li>
-                                    <p>Experiência sólida com equipaments Ubiquiti e MikroTik.</p>
+                                    <p>Experiência sólida com equipamentos Ubiquiti e MikroTik.</p>
                                 </li>
                             </ul>
                         </div>
@@ -285,11 +287,11 @@
             <div class="contact">
                 <h3>Minhas Redes Sociais</h3>
                 <ul class="social-icons">
-                    <li><a href="https://wa.me/5581997922470" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="imagens/whats.png" alt="WhatsApp"/></a></li>
-                    <li><a href="https://www.instagram.com/tavares.c_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="imagens/insta.png" alt="Instagram"/></a></li>
-                    <li><a href="https://www.linkedin.com/in/iuri-costa-ba6365230/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg" alt="LinkedIn"/></a></li>
-                    <li><a href="https://github.com/iurizero" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub"/></a></li>
-                    <li><a href="mailto:iuri.j.t@outlook.com" aria-label="Email"><img src="imagens/mail.png" alt="Email"/></a></li>
+                    <li><a href="https://wa.me/5581997922470" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="imagens/whats.png" alt="WhatsApp" loading="lazy" decoding="async"/></a></li>
+                    <li><a href="https://www.instagram.com/tavares.c_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="imagens/insta.png" alt="Instagram" loading="lazy" decoding="async"/></a></li>
+                    <li><a href="https://www.linkedin.com/in/iuri-costa-ba6365230/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg" alt="LinkedIn" loading="lazy" decoding="async"/></a></li>
+                    <li><a href="https://github.com/iurizero" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" loading="lazy" decoding="async"/></a></li>
+                    <li><a href="mailto:iuri.j.t@outlook.com" aria-label="Email"><img src="imagens/mail.png" alt="Email" loading="lazy" decoding="async"/></a></li>
                 </ul>
             </div>
         </section>
@@ -303,6 +305,6 @@
         </ul>
     </footer>
 
-    <script src="script/script.js"></script>
+    <noscript>Ative o JavaScript para uma experiência completa.</noscript>
 </body>
 </html>
